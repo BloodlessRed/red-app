@@ -1,0 +1,105 @@
+.black-box{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color:rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-content: center;
+  
+}
+
+.show-black-box{
+  display: flex;
+  animation: ease-in 1s;
+}
+
+.hide-black-box{
+  display: none;
+}
+
+@keyframes rotation{
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.loading-screen{
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border-radius: 5px;
+  font-family: Noto Sans;
+  background-color: white;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  top:0;
+	bottom: 0;
+	left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loading-picture{
+  max-height: 50%;
+  animation:rotation 10s infinite ;
+}
+
+.goods-pop-up{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: ivory;
+  top:0;
+	bottom: 0;
+	left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  overflow: auto;
+}
+
+.exit-pop-up{
+  position: relative;
+  width:auto;
+  margin-left: 98%;
+  cursor: pointer;
+  top:0;
+}
+
+.head-of-table{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.first-cell{
+  flex: 2;
+  text-align: center;
+}
+
+.other-cells{
+  width: 10%;
+  flex: 1;
+  text-align: center;
+}
+
+.item-line-up{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0px;
+  div{
+    margin: 0 8%;
+  }
+}
+
+
+.clearingButton{
+  width: 20%;
+  align-self: center;
+}

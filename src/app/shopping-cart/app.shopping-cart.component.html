@@ -1,0 +1,21 @@
+<div *ngIf="getBlackBoxVisibility" class="black-box {{getBlackBoxVisibility}}" id="shadow">
+  <div *ngIf="getLoadingScreenVisibility" class="loading-screen" id="loader">
+    <p>Loading</p>
+    <img src="../../assets/LoadingPic.png" class="loading-picture">
+  </div>  
+  <div *ngIf="getGoodsCartVisibility" class="goods-pop-up" id="goodsCart">
+    <div class="exit-pop-up" (click)="hideCart()">X</div>
+    <div class="head-of-table">
+      <div class="other-cells">Title</div>
+      <div class="first-cell">Count</div>
+      <div class="other-cells">Total price</div>
+    </div>
+    <div class="item-line-up" *ngFor='let item of getItemsInCart'>
+      <div class="first-cell">{{item[1][0]}}</div>
+      <div class="amount-of-items"><button (click)="counterObject.action('sub', item[0])">-</button><input class="input-counter" value="{{item[1][1]}}" disabled><button (click)="counterObject.action('add',item[0])">+</button></div>
+      <div class="other-cell">{{item[1][2]}}</div>
+      <!-- {{test(getItemsInCart)}} -->
+    </div>
+    <button class="clearing-button" (click)='removeAllItems()'>remove all items</button>
+  </div>
+</div>  

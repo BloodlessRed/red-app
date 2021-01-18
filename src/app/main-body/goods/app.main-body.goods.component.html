@@ -1,0 +1,21 @@
+<div class="commodities-wrapper">
+  <div class="goods-line">
+    
+  </div>
+  <div class="commodities-info">
+    <div class="results-amount">Showing 6 out of XXX results</div>
+    <div class="sorting-options">
+      <select class="sorting-box">
+        <option>Default sorting</option>
+      </select>
+    </div>
+  </div>
+  <div id="main-container-for-goods" class="item-selection" >
+   <div *ngFor = 'let item of arrayOfGoods; let i = index' class="item" >
+    <img src = {{item[2]}} alt="no_image">
+    <div>{{item[0]}}</div>
+    <div>{{item[1]}}$</div>
+    <button class="readMore" (click) = 'addCounterToPopUp(); goodsInCart(i)'>Add to cart</button>
+ </div>
+  </div>
+</div>

@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'red-app';
-  smthBasic = 'idk what to write here';
+
+
 }
