@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { GlobalVariables } from "src/GlobalVariables";
+import { Component, OnInit } from "@angular/core";
+import { GlobalVariablesService } from "src/GlobalVariablesService";
 import { ShoppingCart } from "../shopping-cart/app.shopping-cart.component";
 
 @Component({
@@ -7,12 +7,11 @@ import { ShoppingCart } from "../shopping-cart/app.shopping-cart.component";
   templateUrl: './app.header.component.html',
   styleUrls: ['./app.header.component.less']
 })
-export class Header{
+export class Header {
 
-  constructor(){
+  constructor(private globalVariablesService:GlobalVariablesService){
 
   }
-
 
   // public static style:string;
 
@@ -20,24 +19,24 @@ export class Header{
   
   
   public get getPopUp() : number {
-    return GlobalVariables.popUp;
+    return this.globalVariablesService.popUp;
   }
 
   
   public set setPopUp(v : number) {
-    GlobalVariables.popUp = v;
+    this.globalVariablesService.popUp = v;
   }
  
   public revealCart(){
 
-    ShoppingCart.blackBoxVisibility = true;
+    this.globalVariablesService.blackBoxVisibility = true;
 
-    ShoppingCart.loadingScreenVisibility = true;
+    this.globalVariablesService.loadingScreenVisibility = true;
 
     setTimeout(() => {
-      ShoppingCart.loadingScreenVisibility = false;
+      this.globalVariablesService.loadingScreenVisibility = false;
 
-      ShoppingCart.goodsCartVisibility = true;
+      this.globalVariablesService.goodsCartVisibility = true;
     }, 2000);
   }
   // public get getStyle() : string {

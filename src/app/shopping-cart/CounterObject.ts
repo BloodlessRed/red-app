@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
-import { GlobalVariables } from "src/GlobalVariables";
+import { GlobalVariablesService } from "src/GlobalVariablesService";
 
 @Injectable()
 export class CounterObject{
 
-  public itemsInCartMap:Map<any,any>;
-  constructor(){
+  constructor(private globalVariablesService:GlobalVariablesService){
 
-    this.itemsInCartMap = GlobalVariables.itemsInCartMap;
   }
   action(action:string, keyForMap:number){
 
@@ -17,10 +15,12 @@ export class CounterObject{
 
     let price = 0;
 
-    let mapValue = GlobalVariables.itemsInCartMap.get(keyForMap);
+    let mapValue = this.globalVariablesService.itemsInCartMap.get(keyForMap);
 
-    GlobalVariables.arrayOfGoods.forEach((ele)=>{
+    this.globalVariablesService.arrayOfGoods.forEach((ele)=>{
+
       if(ele[0]==mapValue[0]){
+
         price = ele[1];
       }
     })
@@ -31,17 +31,17 @@ export class CounterObject{
 
         mapValue[1]--;
 
-        GlobalVariables.popUp--;
+        this.globalVariablesService.popUp--;
       }
 
     }else if (action == "add"){
 
       mapValue[1]++;
 
-      GlobalVariables.popUp++
+      this.globalVariablesService.popUp++
     }
 
-    GlobalVariables.itemsInCartMap.set(keyForMap,[mapValue[0],mapValue[1],price * mapValue[1]]);
+    this.globalVariablesService.itemsInCartMap.set(keyForMap,[mapValue[0],mapValue[1],price * mapValue[1]]);
   
   }
 }

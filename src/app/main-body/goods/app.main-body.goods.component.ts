@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Header } from "src/app/header/app.header.component";
 import { ShoppingCart } from "src/app/shopping-cart/app.shopping-cart.component";
-import { GlobalVariables } from "src/GlobalVariables";
+import { GlobalVariablesService } from "src/GlobalVariablesService";
 
 @Component({
   selector: 'goods',
@@ -10,20 +10,23 @@ import { GlobalVariables } from "src/GlobalVariables";
 })
 export class Goods{
 
-  public arrayOfGoods = GlobalVariables.arrayOfGoods;
-
-  constructor(){
+  constructor(public globalVariablesService:GlobalVariablesService){
 
   }
 
   public goodsInCart(id:number):void{
-    ShoppingCart.goodsInCart(id);
+    this.globalVariablesService.goodsInCart(id);
+
   }
 
   public addCounterToPopUp():void {
 
-    GlobalVariables.popUp++;
+    this.globalVariablesService.popUp++;
 
+  }
+
+  public get getArrayOfGoods(){
+    return this.globalVariablesService.arrayOfGoods;
   }
   
 }
