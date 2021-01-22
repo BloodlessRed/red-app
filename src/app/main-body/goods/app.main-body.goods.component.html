@@ -3,7 +3,7 @@
     
   </div>
   <div class="commodities-info">
-    <div class="results-amount">Showing {{globalVariablesService.arrayOfGoods.length}} out of {{globalVariablesService.arrayOfGoods.length}} results</div>
+    <div class="results-amount">Showing {{getArrayOfGoodsLength}} out of {{getArrayOfGoodsLength}} results</div>
     <div class="sorting-options">
       <select class="sorting-box">
         <option>Default sorting</option>
@@ -15,7 +15,10 @@
     <img src = {{item[2]}} alt="no_image">
     <div>{{item[0]}}</div>
     <div>{{item[1]}}$</div>
-    <button class="readMore" (click) = 'addCounterToPopUp(); goodsInCart(i)'>Add to cart</button>
- </div>
+    <div class="item-buttons">
+      <button (click) = 'addCounterToPopUp(); goodsInCart(i)'>Add to cart</button>
+      <button [routerLink] = "['/item',i]">Read more</button>
+    </div>
+  </div>
   </div>
 </div>

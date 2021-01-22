@@ -8,6 +8,7 @@ import { Footer } from './footer/app.footer.component';
 import { MainHeader } from './header/app.header.module';
 import { MainBodyOfSite } from './main-body/app.main-body.module';
 import { PageNotFound } from './page-not-found/app.page-not-found.component';
+import { UserProfileComponent } from './user-profile/app.user-profile.component';
 
 
 @NgModule({

@@ -29,5 +29,8 @@ export class Goods{
     return this.globalVariablesService.arrayOfGoods;
   }
   
+  public get getArrayOfGoodsLength(){
+    return this.globalVariablesService.arrayOfGoods.length;
+  }
 }
 

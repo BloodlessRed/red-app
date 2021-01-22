@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { MainHeader } from "../header/app.header.module";
 import { Body } from "./app.main-body.component";
 import { Goods } from "./goods/app.main-body.goods.component";
@@ -14,7 +15,7 @@ import { SearchBox } from "./search-box/app.main-body.search-box.component";
     SearchBox
 
   ],
-  imports:[MainHeader, CommonModule],
+  imports:[MainHeader, CommonModule, RouterModule],
   exports:[
     Body,
     Introduction,
