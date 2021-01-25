@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { Product } from "../products/Product";
 
 @Injectable()
 export class GlobalVariablesService {

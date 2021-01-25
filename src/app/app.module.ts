@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -7,7 +8,6 @@ import { Footer } from './footer/app.footer.component';
 import { MainHeader } from './header/app.header.module';
 import { ProductsContainer } from './products/app.products.module';
 import { GlobalVariablesService } from './services/GlobalVariablesService';
-import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
