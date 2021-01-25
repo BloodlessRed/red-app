@@ -8,7 +8,7 @@
   </svg>  
   <div class="text-alignment-wrap" >
     <div *ngFor = 'let service of services' class="text-margin" >
-      <span class="header-text">{{service}}</span>
+      <a class="header-text" routerLink={{service[1]}}>{{service[0]}}</a>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4.3225 4.83871L7 7.51038L9.6775 4.83871L10.5 5.66121L7 9.16121L3.5 5.66121L4.3225 4.83871Z" fill="white"/>
       </svg>

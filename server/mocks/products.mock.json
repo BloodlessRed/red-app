@@ -1,0 +1,34 @@
+{
+  "products":[
+    {
+      "name":"Atlas Copco 4220-0982-15 15 meter Cable",
+      "price":2000,
+      "img":"./assets/Atlas Cable 1.png"
+    },
+    {
+      "name":"Atlas Copco 4220-1007-10 10 meter Extension Cable",  
+      "price":2100,
+      "img":"./assets/Atlas Cable 2.png"
+    },
+    {
+      "name":"Atlas Copco 4200-1010-15 10 meter Extension Cable",
+      "price": 2100,
+      "img": "./assets/Atlas Cable 3.png"
+    },
+    {
+      "name":"Atlas Copco Nutrunner 1",  
+      "price":3400,
+      "img":"./assets/Atlas ETD inline 1.png"
+    },
+    {
+      "name":"Atlas Copco Nutrunner 2",
+      "price": 3240,
+      "img": "./assets/Atlas ETD inline 2.png"
+    },
+    {
+      "name":"Atlas Copco Nutrunner 3", 
+      "price":5000,
+      "img": "./assets/Atlas ETD inline 3.png"
+    }
+  ]
+}

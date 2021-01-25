@@ -2,8 +2,8 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: 'introduction',
-  templateUrl: './app.main-body.introduction.component.html',
-  styleUrls: ['./app.main-body.introduction.component.less']
+  templateUrl: './app.products.introduction.component.html',
+  styleUrls: ['./app.products.introduction.component.less']
 })
 export class Introduction {
 

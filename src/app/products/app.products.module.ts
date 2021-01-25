@@ -2,14 +2,14 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { MainHeader } from "../header/app.header.module";
-import { Body } from "./app.main-body.component";
-import { Goods } from "./goods/app.main-body.goods.component";
-import { Introduction } from "./introduction/app.main-body.introduction.component";
-import { SearchBox } from "./search-box/app.main-body.search-box.component";
+import { Products } from "./app.products.component";
+import { Goods } from "./goods/app.products.goods.component";
+import { Introduction } from "./introduction/app.products.introduction.component";
+import { SearchBox } from "./search-box/app.products.search-box.component";
 
 @NgModule({
   declarations:[
-    Body,
+    Products,
     Introduction,
     Goods,
     SearchBox
@@ -17,13 +17,13 @@ import { SearchBox } from "./search-box/app.main-body.search-box.component";
   ],
   imports:[MainHeader, CommonModule, RouterModule],
   exports:[
-    Body,
+    Products,
     Introduction,
     Goods,
     SearchBox
 
   ]
 })
-export class MainBodyOfSite{
+export class ProductsContainer{
 
 }

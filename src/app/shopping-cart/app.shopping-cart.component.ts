@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
-import { GlobalVariablesService } from "src/GlobalVariablesService";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { from, Subject } from "rxjs";
+import { GlobalVariablesService } from "src/app/services/GlobalVariablesService";
 import { CounterObject } from "./CounterObject";
 
 @Component({
@@ -7,67 +8,77 @@ import { CounterObject } from "./CounterObject";
   templateUrl: './app.shopping-cart.component.html',
   styleUrls: ['./app.shopping-cart.component.less']
 })
-export class ShoppingCart {
+export class ShoppingCart implements OnInit, OnDestroy{
 
   public counterObject = new CounterObject(this.globalVariablesService);
 
+  public goodsInCart:any[] = [];
+
+  public globalVariablesMapObserver$: Subject<Map<any,any>>;
+
   constructor(private globalVariablesService:GlobalVariablesService){
-    
+
+    this.globalVariablesMapObserver$ = this.globalVariablesService.getMapObserver$();
   }
 
-  // public test(v:any):void{
-  //   console.log(v);
-  // }
+  ngOnInit(){
+
+    this.globalVariablesMapObserver$.subscribe((val)=>{
+      this.goodsInCart = Array.from(val);
+    })
+
+  }
+
+  ngOnDestroy(){
+
+    this.globalVariablesMapObserver$.unsubscribe();
+  }
 
   hideCart() {
 
-    this.globalVariablesService.blackBoxVisibility = false;
+    this.globalVariablesService.setBlackBoxVisibility(false);
 
-    this.globalVariablesService.loadingScreenVisibility = false;
+    this.globalVariablesService.setLoadingScreenVisibility(false);
 
-    this.globalVariablesService.goodsCartVisibility = false;
+    this.globalVariablesService.setGoodsCartVisibility(false);
   }
   
   
   public removeAllItems(){
 
 
-    this.globalVariablesService.itemsInCartMap.clear();
+    this.globalVariablesService.setItemsInCartMap(new Map());
 
-    this.globalVariablesService.popUp = 0;
+    this.globalVariablesService.setPopUp(0);
 
-    this.globalVariablesService.arrayOfCounters = [];
+    this.globalVariablesService.setArrayOfCounters([]);
 
-    console.log(this.globalVariablesService.itemsInCartMap)
+    console.log(this.globalVariablesService.getItemsInCartMap())
   }
 
-  public get getBlackBoxVisibility() : boolean {
-    return this.globalVariablesService.blackBoxVisibility;
-  }
+  public getBlackBoxVisibility() : boolean {
 
-  
-  public set setBlackBoxVisibility(v : boolean) {
-    this.globalVariablesService.blackBoxVisibility = v;
-  }
-  
-  public get getLoadingScreenVisibility() : boolean {
-    return this.globalVariablesService.loadingScreenVisibility;
+    return this.globalVariablesService.getBlackBoxVisibility();
   }
 
   
-  public set setLoadingScreenVisibility(v : boolean) {
-    this.globalVariablesService.loadingScreenVisibility = v;
+  public setBlackBoxVisibility(v : boolean) {
+    this.globalVariablesService.setBlackBoxVisibility(v);
+  }
+  
+  public getLoadingScreenVisibility() : boolean {
+    return this.globalVariablesService.getLoadingScreenVisibility();
   }
 
   
-  public get getGoodsCartVisibility() : boolean {
-    return this.globalVariablesService.goodsCartVisibility;
+  public setLoadingScreenVisibility(v : boolean) {
+    this.globalVariablesService.setLoadingScreenVisibility(v);
   }
-  
 
-  public get getItemsInCart(){
-    return Array.from(this.globalVariablesService.itemsInCartMap) 
-  }
   
+  public getGoodsCartVisibility() : boolean {
+    return this.globalVariablesService.getGoodsCartVisibility();
+  }
+    
 
 }

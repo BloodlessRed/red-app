@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { GlobalVariablesService } from "src/GlobalVariablesService";
+import { GlobalVariablesService } from "src/app/services/GlobalVariablesService";
 import { ShoppingCart } from "../shopping-cart/app.shopping-cart.component";
 
 @Component({
@@ -15,28 +15,35 @@ export class Header {
 
   // public static style:string;
 
-  services = ['Services','Company','Customer Portfolio','Free Evaluation','Contacts'];
+  services = [
+    ['Main page','/main-page'],
+    ['Services','/services'],
+    ['Company','/about-company'],
+    ['Customer Portfolio', '/customer-portfolio'],
+    ['Free Evaluation', '/evaluation'],
+    ['Contacts','/contacts']
+  ];
   
   
   public get getPopUp() : number {
-    return this.globalVariablesService.popUp;
+    return this.globalVariablesService.getPopUp();
   }
 
   
   public set setPopUp(v : number) {
-    this.globalVariablesService.popUp = v;
+    this.globalVariablesService.setPopUp (v);
   }
  
   public revealCart(){
 
-    this.globalVariablesService.blackBoxVisibility = true;
+    this.globalVariablesService.setBlackBoxVisibility (true);
 
-    this.globalVariablesService.loadingScreenVisibility = true;
+    this.globalVariablesService.setLoadingScreenVisibility(true);
 
     setTimeout(() => {
-      this.globalVariablesService.loadingScreenVisibility = false;
+      this.globalVariablesService.setLoadingScreenVisibility(false);
 
-      this.globalVariablesService.goodsCartVisibility = true;
+      this.globalVariablesService.setGoodsCartVisibility(true);
     }, 2000);
   }
   // public get getStyle() : string {
