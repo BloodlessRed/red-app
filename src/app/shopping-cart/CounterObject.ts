@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { GlobalVariablesService } from "src/app/services/GlobalVariablesService";
 
-@Injectable()
+
 export class CounterObject{
 
   constructor(private globalVariablesService:GlobalVariablesService){
@@ -15,7 +15,7 @@ export class CounterObject{
 
     let price = 0;
 
-    let mapValue = this.globalVariablesService.getItemsInCartMap().get(keyForMap);
+    let mapValue = this.globalVariablesService.getItemsInCartMap().get(keyForMap) as [string,number,number];
 
     this.globalVariablesService.getArrayOfGoods().forEach((ele)=>{
 

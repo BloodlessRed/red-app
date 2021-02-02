@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
+import { Product } from "../model/product.model";
 
 @Injectable()
 export class GlobalVariablesService {
@@ -59,12 +60,12 @@ export class GlobalVariablesService {
     this.popUp = value;
   }
 
-  private itemsInCartMap: Map<any, any>;
+  private itemsInCartMap: Map<number, unknown>;
 
-  public getItemsInCartMap(): Map<any, any> {
+  public getItemsInCartMap(): Map<number, unknown> {
     return this.itemsInCartMap;
   }
-  public setItemsInCartMap(value: Map<any, any>) {
+  public setItemsInCartMap(value: Map<number, unknown>) {
     this.itemsInCartMap = value;
 
     this.mapObserver$.next(value);
@@ -88,11 +89,11 @@ export class GlobalVariablesService {
     this.show = value;
   }
 
-  private mapObserver$: Subject<Map<any,any>>;
+  private mapObserver$: Subject<Map<number,unknown>>;
 
-  public getMapObserver$(){
+  public getMapObserver$(): Observable<Map<number,unknown>>{
 
-    return this.mapObserver$;
+    return this.mapObserver$.asObservable();
   }
 
   constructor(private http: HttpClient){
@@ -123,22 +124,23 @@ export class GlobalVariablesService {
   
     this.show = 'show';
 
-    this.mapObserver$ = new Subject<Map<any,any>>();
+    this.mapObserver$ = new Subject<Map<number,unknown>>();
 
-    this.getProducts().subscribe((prod:Object[])=>{
+    this.getProducts().subscribe((prod:Product[])=>{
 
+      console.log(prod);
       this.arrayOfGoods = prod.map((element)=>{
+
 
         return Object.values(element);
       })
     })
 
-
   }
 
-  getProducts():Observable<Object[]>{
-    console.log(this.http.get<Object[]>('/api/products'));
-    return this.http.get<Object[]>('/api/products');
+  getProducts():Observable<Product[]>{
+    console.log(this.http.get<Product[]>('/api/products'));
+    return this.http.get<Product[]>('/api/products');
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { from, Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 import { GlobalVariablesService } from "src/app/services/GlobalVariablesService";
 import { CounterObject } from "./CounterObject";
 
@@ -14,16 +15,17 @@ export class ShoppingCart implements OnInit, OnDestroy{
 
   public goodsInCart:any[] = [];
 
-  public globalVariablesMapObserver$: Subject<Map<any,any>>;
+  private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private globalVariablesService:GlobalVariablesService){
 
-    this.globalVariablesMapObserver$ = this.globalVariablesService.getMapObserver$();
   }
 
   ngOnInit(){
 
-    this.globalVariablesMapObserver$.subscribe((val)=>{
+    this.globalVariablesService.getMapObserver$()
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((val)=>{
       this.goodsInCart = Array.from(val);
     })
 
@@ -31,7 +33,9 @@ export class ShoppingCart implements OnInit, OnDestroy{
 
   ngOnDestroy(){
 
-    this.globalVariablesMapObserver$.unsubscribe();
+    this.unsubscribe$.next();
+
+    // this.globalVariablesMapObserver$.unsubscribe();
   }
 
   hideCart() {
